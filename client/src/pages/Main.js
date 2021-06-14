@@ -6,6 +6,9 @@ export default function Main() {
   function handleClick() {
     console.log("Click!");
   }
+  function handleInputChange() {
+    console.log("Input!");
+  }
 
   return (
     <div>
@@ -24,6 +27,7 @@ export default function Main() {
                 <input
                   placeholder="Please enter an item to your list"
                   id="input-task"
+                  onChange={handleInputChange}
                 ></input>
                 <button className="input-task-button" onClick={handleClick}>
                   Add
@@ -31,6 +35,7 @@ export default function Main() {
                 <input
                   placeholder="Please enter a number of minutes for this task"
                   id="input-task-minutes"
+                  onChange={handleInputChange}
                 ></input>
                 <button className="input-task-button" onClick={handleClick}>
                   Add
@@ -47,6 +52,7 @@ export default function Main() {
                 <input
                   placeholder="Please enter a number of minutes for transition"
                   id="input-transition-minutes"
+                  onChange={handleInputChange}
                 ></input>
                 <button className="input-task-button" onClick={handleClick}>
                   Add
