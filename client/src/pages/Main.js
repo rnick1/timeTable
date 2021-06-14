@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { Card, Row, Container, Jumbotron, ProgressBar } from "react-bootstrap";
 import "../App.css";
 
 export default function Main() {
+  function handleClick() {
+    console.log("Click!");
+  }
+
   return (
     <div>
       <Jumbotron className="main-jumbo">
@@ -21,12 +25,16 @@ export default function Main() {
                   placeholder="Please enter an item to your list"
                   id="input-task"
                 ></input>
-                <button className="input-task-button">Add</button>
+                <button className="input-task-button" onClick={handleClick}>
+                  Add
+                </button>
                 <input
                   placeholder="Please enter a number of minutes for this task"
                   id="input-task-minutes"
                 ></input>
-                <button className="input-task-button">Add</button>
+                <button className="input-task-button" onClick={handleClick}>
+                  Add
+                </button>
               </Row>
             </Container>
           </Card>
@@ -40,11 +48,15 @@ export default function Main() {
                   placeholder="Please enter a number of minutes for transition"
                   id="input-transition-minutes"
                 ></input>
-                <button className="input-task-button">Add</button>
+                <button className="input-task-button" onClick={handleClick}>
+                  Add
+                </button>
               </Row>
             </Container>
           </Card>
-          <button id="add-task-button">Add another task</button>
+          <button id="add-task-button" onClick={handleClick}>
+            Add another task
+          </button>
         </Jumbotron>
       </Container>
     </div>
