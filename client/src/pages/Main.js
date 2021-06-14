@@ -1,14 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card, Row, Container, Jumbotron, ProgressBar } from "react-bootstrap";
 import "../App.css";
 
 export default function Main() {
-  function handleClick() {
-    console.log("Click!");
+  const [listItem, setListItem] = useState({});
+
+  function handleInputChange(event) {
+    // console.log(event.target.value);
+    const listInput = event.target.value;
+    setListItem(listInput);
   }
-  function handleInputChange() {
-    console.log("Input!");
+
+  function handleFormSubmit(event) {
+    event.preventDefault();
+    // console.log(event.type);
+    // setListItem(listInput);
   }
+
+  console.log(listItem);
 
   return (
     <div>
@@ -22,26 +31,38 @@ export default function Main() {
             {/* Name of task will go here */}
             <p className="task-name">Name of task</p>
             <ProgressBar variant="danger" now={65} id="task-bar" />
+            {/* ========================================================================= */}
             <Container>
               <Row>
-                <input
-                  placeholder="Please enter an item to your list"
-                  id="input-task"
-                  onChange={handleInputChange}
-                ></input>
-                <button className="input-task-button" onClick={handleClick}>
-                  Add
-                </button>
-                <input
-                  placeholder="Please enter a number of minutes for this task"
-                  id="input-task-minutes"
-                  onChange={handleInputChange}
-                ></input>
-                <button className="input-task-button" onClick={handleClick}>
-                  Add
-                </button>
+                <form>
+                  <input
+                    placeholder="Please enter an item to your list"
+                    id="input-task"
+                    name="listItem"
+                    onChange={handleInputChange}
+                  ></input>
+                  <button
+                    className="input-task-button"
+                    onClick={handleFormSubmit}
+                  >
+                    Add
+                  </button>
+                  <input
+                    placeholder="Please enter a number of minutes for this task"
+                    id="input-task-minutes"
+                    name="setTime"
+                    onChange={handleInputChange}
+                  ></input>
+                  <button
+                    className="input-task-button"
+                    onClick={handleFormSubmit}
+                  >
+                    Add
+                  </button>
+                </form>
               </Row>
             </Container>
+            {/* ========================================================================== */}
           </Card>
           <br />
           <Card>
@@ -54,13 +75,16 @@ export default function Main() {
                   id="input-transition-minutes"
                   onChange={handleInputChange}
                 ></input>
-                <button className="input-task-button" onClick={handleClick}>
+                <button
+                  className="input-task-button"
+                  onClick={handleFormSubmit}
+                >
                   Add
                 </button>
               </Row>
             </Container>
           </Card>
-          <button id="add-task-button" onClick={handleClick}>
+          <button id="add-task-button" onClick={handleFormSubmit}>
             Add another task
           </button>
         </Jumbotron>
