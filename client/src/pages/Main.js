@@ -5,10 +5,6 @@ import "../App.css";
 export default function Main() {
   const [listItem, setListItem] = useState(" ");
 
-  // function handleInputChange(event) {
-  //   setListItem(event.target.value);
-  // }
-
   // function handleSubmit(event) {}
 
   console.log(listItem);
@@ -23,12 +19,14 @@ export default function Main() {
           <Card>
             <br />
             {/* Name of task will go here */}
-            <p className="task-name">Name of task</p>
+            <p className="task-name">
+              {listItem === " " ? "Name of task" : listItem}
+            </p>
             <ProgressBar variant="danger" now={65} id="task-bar" />
             {/* ========================================================================= */}
             <Container>
               <Row>
-                <form>
+                <form onSubmit={handleSubmit}>
                   <input
                     placeholder="Please enter an item to your list"
                     id="input-task"
