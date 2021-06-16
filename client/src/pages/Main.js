@@ -3,19 +3,13 @@ import { Card, Row, Container, Jumbotron, ProgressBar } from "react-bootstrap";
 import "../App.css";
 
 export default function Main() {
-  const [listItem, setListItem] = useState({});
+  const [listItem, setListItem] = useState(" ");
 
-  function handleInputChange(event) {
-    // console.log(event.target.value);
-    const listInput = event.target.value;
-    setListItem(listInput);
-  }
+  // function handleInputChange(event) {
+  //   setListItem(event.target.value);
+  // }
 
-  function handleFormSubmit(event) {
-    event.preventDefault();
-    // console.log(event.type);
-    // setListItem(listInput);
-  }
+  // function handleSubmit(event) {}
 
   console.log(listItem);
 
@@ -38,31 +32,29 @@ export default function Main() {
                   <input
                     placeholder="Please enter an item to your list"
                     id="input-task"
-                    name="listItem"
-                    onChange={handleInputChange}
+                    name="task"
+                    onChange={(event) => setListItem(event.target.value)}
                   ></input>
-                  <button
-                    className="input-task-button"
-                    onClick={handleFormSubmit}
-                  >
-                    Add
-                  </button>
-                  <input
-                    placeholder="Please enter a number of minutes for this task"
-                    id="input-task-minutes"
-                    name="setTime"
-                    onChange={handleInputChange}
-                  ></input>
-                  <button
-                    className="input-task-button"
-                    onClick={handleFormSubmit}
-                  >
+                  <button className="input-task-button" type="submit">
                     Add
                   </button>
                 </form>
+                {/* ========================================================================== */}
+
+                <input
+                  placeholder="Please enter a number of minutes for this task"
+                  id="input-task-minutes"
+                  name="setTime"
+                  // onChange={handleInputChange}
+                ></input>
+                <button
+                  className="input-task-button"
+                  // onClick={handleFormSubmit}
+                >
+                  Add
+                </button>
               </Row>
             </Container>
-            {/* ========================================================================== */}
           </Card>
           <br />
           <Card>
@@ -73,18 +65,21 @@ export default function Main() {
                 <input
                   placeholder="Please enter a number of minutes for transition"
                   id="input-transition-minutes"
-                  onChange={handleInputChange}
+                  // onChange={handleInputChange}
                 ></input>
                 <button
                   className="input-task-button"
-                  onClick={handleFormSubmit}
+                  // onClick={handleFormSubmit}
                 >
                   Add
                 </button>
               </Row>
             </Container>
           </Card>
-          <button id="add-task-button" onClick={handleFormSubmit}>
+          <button
+            id="add-task-button"
+            // onClick={handleFormSubmit}
+          >
             Add another task
           </button>
         </Jumbotron>
@@ -92,3 +87,13 @@ export default function Main() {
     </div>
   );
 }
+
+// Notes
+
+/*
+1. The buttons and inputs work.
+2. When a user enters a list item into the input, that needs to update state.
+3. When the user clicks the list item submit button, the input needs to go away and the list item needs to be displayed.
+4. 
+
+*/
