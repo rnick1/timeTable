@@ -4,11 +4,13 @@ import "../App.css";
 
 export default function Main() {
   const [listItem, setListItem] = useState(" ");
-
-  // function handleSubmit(event) {}
+  const [visibility, setVisibility] = useState(true);
 
   console.log(listItem);
 
+  // function handleClick(){
+
+  // }
   return (
     <div>
       <Jumbotron className="main-jumbo">
@@ -26,17 +28,24 @@ export default function Main() {
             {/* ========================================================================= */}
             <Container>
               <Row>
-                <form onSubmit={handleSubmit}>
-                  <input
-                    placeholder="Please enter an item to your list"
-                    id="input-task"
-                    name="task"
-                    onChange={(event) => setListItem(event.target.value)}
-                  ></input>
-                  <button className="input-task-button" type="submit">
-                    Add
-                  </button>
-                </form>
+                {visibility === true ? (
+                  <form>
+                    <input
+                      placeholder="Please enter an item to your list"
+                      id="input-task"
+                      name="task"
+                      onChange={(event) => setListItem(event.target.value)}
+                    ></input>
+                    <button
+                      className="input-task-button"
+                      onClick={(event) => setVisibility(false)}
+                    >
+                      Add
+                    </button>
+                  </form>
+                ) : (
+                  <br />
+                )}
                 {/* ========================================================================== */}
 
                 <input
