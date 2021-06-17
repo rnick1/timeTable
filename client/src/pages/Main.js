@@ -5,12 +5,11 @@ import "../App.css";
 export default function Main() {
   const [listItem, setListItem] = useState(" ");
   const [visibility, setVisibility] = useState(true);
+  const [timeLimit, setTimeLimit] = useState(" ");
 
-  console.log(listItem);
+  // console.log(timeLimit);
+  console.log(visibility);
 
-  // function handleClick(){
-
-  // }
   return (
     <div>
       <Jumbotron className="main-jumbo">
@@ -25,10 +24,9 @@ export default function Main() {
               {listItem === " " ? "Name of task" : listItem}
             </p>
             <ProgressBar variant="danger" now={65} id="task-bar" />
-            {/* ========================================================================= */}
             <Container>
               <Row>
-                {visibility === true ? (
+                {visibility ? (
                   <form>
                     <input
                       placeholder="Please enter an item to your list"
@@ -44,7 +42,7 @@ export default function Main() {
                     </button>
                   </form>
                 ) : (
-                  <br />
+                  <button onClick={(event) => setVisibility(true)}>Edit</button>
                 )}
                 {/* ========================================================================== */}
 
@@ -52,7 +50,7 @@ export default function Main() {
                   placeholder="Please enter a number of minutes for this task"
                   id="input-task-minutes"
                   name="setTime"
-                  // onChange={handleInputChange}
+                  onChange={(event) => setTimeLimit(event.target.value)}
                 ></input>
                 <button
                   className="input-task-button"
@@ -60,6 +58,7 @@ export default function Main() {
                 >
                   Add
                 </button>
+                {/* ========================================================================= */}
               </Row>
             </Container>
           </Card>
