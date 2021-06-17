@@ -4,11 +4,12 @@ import "../App.css";
 
 export default function Main() {
   const [listItem, setListItem] = useState(" ");
-  const [visibility, setVisibility] = useState(true);
-  const [timeLimit, setTimeLimit] = useState(" ");
+  const [taskVisibility, setTaskVisibility] = useState(true);
+  const [timeVisibility, setTimeVisibility] = useState(true);
+  const [timeLimit, setTimeLimit] = useState(0);
 
   // console.log(timeLimit);
-  console.log(visibility);
+  console.log(timeVisibility);
 
   return (
     <div>
@@ -23,10 +24,13 @@ export default function Main() {
             <p className="task-name">
               {listItem === " " ? "Name of task" : listItem}
             </p>
+            <p className="task-name">
+              {timeLimit === 0 ? "Time Limit" : timeLimit + " Minutes"}
+            </p>
             <ProgressBar variant="danger" now={65} id="task-bar" />
             <Container>
               <Row>
-                {visibility ? (
+                {taskVisibility ? (
                   <form>
                     <input
                       placeholder="Please enter an item to your list"
@@ -36,29 +40,42 @@ export default function Main() {
                     ></input>
                     <button
                       className="input-task-button"
-                      onClick={(event) => setVisibility(false)}
+                      onClick={(event) => setTaskVisibility(false)}
                     >
                       Add
                     </button>
                   </form>
                 ) : (
-                  <button onClick={(event) => setVisibility(true)}>Edit</button>
+                  <button onClick={(event) => setTaskVisibility(true)}>
+                    Edit Task
+                  </button>
                 )}
-                {/* ========================================================================== */}
+                {timeVisibility ? (
+                  <form>
+                    <input
+                      placeholder="Please enter a number of minutes for this task"
+                      id="input-task-minutes"
+                      name="setTime"
+                      onChange={(event) => setTimeLimit(event.target.value)}
+                    ></input>
+                    <button
+                      className="input-task-button"
+                      onClick={(event) => setTimeVisibility(false)}
+                    >
+                      Add
+                    </button>
+                  </form>
+                ) : (
+                  <button onClick={(event) => setTimeVisibility(true)}>
+                    Edit Time
+                  </button>
+                )}
+                {/* {taskVisibility ? } */}
+                <button>Start</button>
+                <button>Stop</button>
 
-                <input
-                  placeholder="Please enter a number of minutes for this task"
-                  id="input-task-minutes"
-                  name="setTime"
-                  onChange={(event) => setTimeLimit(event.target.value)}
-                ></input>
-                <button
-                  className="input-task-button"
-                  // onClick={handleFormSubmit}
-                >
-                  Add
-                </button>
-                {/* ========================================================================= */}
+                {/* // ========================================================================= */}
+                {/* ========================================================================== */}
               </Row>
             </Container>
           </Card>
