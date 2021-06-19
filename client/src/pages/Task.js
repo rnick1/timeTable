@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Card, Row, Container, ProgressBar } from "react-bootstrap";
 import "../App.css";
 
@@ -6,11 +6,28 @@ export default function Task() {
   const [listItem, setListItem] = useState(" ");
   const [taskVisibility, setTaskVisibility] = useState(true);
   const [timeVisibility, setTimeVisibility] = useState(true);
+
+  const [time, setTime] = useState(0);
   const [timeLimit, setTimeLimit] = useState(0);
+  const [startTimer, setStartTimer] = useState(false);
+  const [timeElapsed, setTimeElapsed] = useState(0);
+  // =================================================
 
-  // console.log(timeLimit);
-  // console.log(timeVisibility);
+  useEffect(() => {
+    let interval = null;
 
+    if (startTimer) {
+      interval = setInterval(() => {
+        setTime((prevTime) => prevTime + 10);
+      }, 10);
+    } else if (!startTimer) {
+      clearInterval(interval);
+    }
+
+    return () => clearInterval(interval);
+  }, [startTimer]);
+
+  // =================================================
   return (
     <Card>
       <br />
@@ -21,7 +38,11 @@ export default function Task() {
       <p className="task-name">
         {timeLimit === 0 ? "Time Limit" : timeLimit + " Minutes"}
       </p>
-      <ProgressBar variant="danger" now={65} id="task-bar" />
+      <ProgressBar
+        variant="danger"
+        now={("0" + Math.floor((time / 1000) % 60)).slice(-2)}
+        id="task-bar"
+      />
       <Container>
         <Row>
           {taskVisibility ? (
@@ -65,8 +86,8 @@ export default function Task() {
             </button>
           )}
           {/* {taskVisibility ? } */}
-          <button>Start</button>
-          <button>Stop</button>
+          <button onClick={() => setStartTimer(true)}>Start</button>
+          <button onClick={() => setStartTimer(false)}>Stop</button>
 
           {/* // ========================================================================= */}
           {/* ========================================================================== */}
