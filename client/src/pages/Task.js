@@ -13,13 +13,17 @@ export default function Task() {
   const [timeElapsed, setTimeElapsed] = useState(0);
   // =================================================
 
+  console.log(time);
+  console.log(timeLimit);
+  console.log(startTimer);
+  // Important! Look at Week 4 Activity 9 and 10 for a super basic example of setInterval. Maybe I should set the space not take up by the progress bar and have the progress bar itself expand as the space not taken up by it gets decremented? So setTimeLimit = whatever the user puts in and then decrement from that. If (timeLimit === 0) {make noise}
   useEffect(() => {
     let interval = null;
 
     if (startTimer) {
       interval = setInterval(() => {
-        setTime((prevTime) => prevTime + 10);
-      }, 10);
+        setTime((seconds) => seconds + 0.17 / timeLimit);
+      }, 100);
     } else if (!startTimer) {
       clearInterval(interval);
     }
@@ -40,7 +44,8 @@ export default function Task() {
       </p>
       <ProgressBar
         variant="danger"
-        now={("0" + Math.floor((time / 1000) % 60)).slice(-2)}
+        now={time}
+        // "0" + Math.floor((time / 1000) * 60)
         id="task-bar"
       />
       <Container>
