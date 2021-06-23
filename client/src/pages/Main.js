@@ -1,13 +1,10 @@
 import React, { useState } from "react";
 import { Card, Row, Container, Jumbotron, ProgressBar } from "react-bootstrap";
 import "../App.css";
-import Task from "./Task";
+import Task from "../components/Task-Trans/Task";
+import Transition from "../components/Task-Trans/Transition";
 
 export default function Main() {
-  // const [listItem, setListItem] = useState(" ");
-
-  // console.log(timeLimit);
-
   return (
     <div>
       <Jumbotron className="main-jumbo">
@@ -17,25 +14,7 @@ export default function Main() {
         <Jumbotron>
           <Task />
           <br />
-          <Card>
-            <p className="task-name">Transition</p>
-            <ProgressBar variant="info" now={20} id="transition-bar" />
-            <Container>
-              <Row>
-                <input
-                  placeholder="Please enter a number of minutes for transition"
-                  id="input-transition-minutes"
-                  // onChange={handleInputChange}
-                ></input>
-                <button
-                  className="input-task-button"
-                  // onClick={handleFormSubmit}
-                >
-                  Add
-                </button>
-              </Row>
-            </Container>
-          </Card>
+          <Transition />
           <button
             id="add-task-button"
             // onClick={handleFormSubmit}
