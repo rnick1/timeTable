@@ -6,16 +6,14 @@ export default function Task() {
   const [listItem, setListItem] = useState(" ");
   const [taskVisibility, setTaskVisibility] = useState(true);
   const [timeVisibility, setTimeVisibility] = useState(true);
-
   const [time, setTime] = useState(0);
   const [timeLimit, setTimeLimit] = useState(0);
   const [startTimer, setStartTimer] = useState(false);
-  const [timeElapsed, setTimeElapsed] = useState(0);
-  // =================================================
 
-  console.log(time);
-  console.log(timeLimit);
-  console.log(startTimer);
+  // console.log(time);
+  // console.log(timeLimit);
+  // console.log(startTimer);
+
   // Important! Look at Week 4 Activity 9 and 10 for a super basic example of setInterval. Maybe I should set the space not take up by the progress bar and have the progress bar itself expand as the space not taken up by it gets decremented? So setTimeLimit = whatever the user puts in and then decrement from that. If (timeLimit === 0) {make noise}
   useEffect(() => {
     let interval = null;
@@ -31,7 +29,6 @@ export default function Task() {
     return () => clearInterval(interval);
   }, [startTimer]);
 
-  // =================================================
   return (
     <Card>
       <br />
@@ -93,9 +90,7 @@ export default function Task() {
           {/* {taskVisibility ? } */}
           <button onClick={() => setStartTimer(true)}>Start</button>
           <button onClick={() => setStartTimer(false)}>Stop</button>
-
-          {/* // ========================================================================= */}
-          {/* ========================================================================== */}
+          <button onClick={() => setTime(0)}>Reset</button>
         </Row>
       </Container>
     </Card>
