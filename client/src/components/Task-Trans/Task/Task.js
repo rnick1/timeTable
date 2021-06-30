@@ -14,7 +14,7 @@ export default function Task() {
   // console.log(timeLimit);
   // console.log(startTimer);
 
-  // Important! Look at Week 4 Activity 9 and 10 for a super basic example of setInterval. Maybe I should set the space not take up by the progress bar and have the progress bar itself expand as the space not taken up by it gets decremented? So setTimeLimit = whatever the user puts in and then decrement from that. If (timeLimit === 0) {make noise}
+  // Important! Look at Week 4 Activity 9 and 10 for basic example of setInterval. Maybe I should set the space not take up by the progress bar and have the progress bar itself expand as the space not taken up by it gets decremented? So setTimeLimit = whatever the user puts in and then decrement from that. If (timeLimit === 0) {make noise}
   useEffect(() => {
     let interval = null;
 
