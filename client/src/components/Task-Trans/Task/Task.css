@@ -1,0 +1,29 @@
+.task-name {
+  margin: auto;
+}
+
+#task-bar {
+  height: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 20px;
+}
+
+#input-task {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 20px;
+  width: 40%;
+}
+
+.input-task-button {
+  margin-left: 10px;
+  height: 30px;
+}
+
+#input-task-minutes {
+  margin-left: 20px;
+  margin-right: 10px;
+  margin-bottom: 20px;
+  width: 40%;
+}

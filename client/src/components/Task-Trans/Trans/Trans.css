@@ -1,0 +1,23 @@
+.task-name {
+  margin: auto;
+}
+
+.input-task-button {
+  margin-left: 10px;
+  height: 30px;
+}
+
+#transition-bar {
+  height: 30px;
+  margin-top: 25px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 20px;
+}
+
+#input-transition-minutes {
+  margin-left: 520px;
+  margin-right: 10px;
+  margin-bottom: 20px;
+  width: 40%;
+}

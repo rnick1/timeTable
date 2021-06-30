@@ -1,8 +1,8 @@
 import React from "react";
 import { Container, Jumbotron } from "react-bootstrap";
 import "../App.css";
-import Task from "../components/Task-Trans/Task";
-import Transition from "../components/Task-Trans/Transition";
+import Task from "../components/Task-Trans/Task/Task";
+import Transition from "../components/Task-Trans/Trans/Transition";
 
 export default function Main() {
   return (

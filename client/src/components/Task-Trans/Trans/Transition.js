@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Card, Row, Container, Jumbotron, ProgressBar } from "react-bootstrap";
-import "../../App.css";
+import "./Trans.css";
 
 export default function Transition() {
   return (

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Card, Row, Container, ProgressBar } from "react-bootstrap";
-import "../../App.css";
+import "./Task.css";
 
 export default function Task() {
   const [listItem, setListItem] = useState(" ");
