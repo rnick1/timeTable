@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Card, Row, Container, Jumbotron, ProgressBar } from "react-bootstrap";
+import React from "react";
+import { Container, Jumbotron } from "react-bootstrap";
 import "../App.css";
 import Task from "../components/Task-Trans/Task";
 import Transition from "../components/Task-Trans/Transition";
