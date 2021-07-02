@@ -1,8 +1,7 @@
 import React from "react";
 import { Container, Jumbotron } from "react-bootstrap";
 import "../App.css";
-import Task from "../components/Task-Trans/Task/Task";
-import Transition from "../components/Task-Trans/Trans/Transition";
+import TaskTransCombo from "../components/TaskTransCombo";
 
 export default function Main() {
   return (
@@ -12,9 +11,7 @@ export default function Main() {
       </Jumbotron>
       <Container id="progress-container">
         <Jumbotron>
-          <Task />
-          <br />
-          <Transition />
+          <TaskTransCombo />
           <button
             id="add-task-button"
             // onClick={handleFormSubmit}
