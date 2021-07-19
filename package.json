@@ -23,7 +23,6 @@
     "bootstrap": "^4.6.0",
     "express": "^4.16.3",
     "if-env": "^1.0.4",
-    "react-bootstrap": "^1.6.0",
-    "use-sound": "^4.0.0"
+    "react-bootstrap": "^1.6.0"
   }
 }
