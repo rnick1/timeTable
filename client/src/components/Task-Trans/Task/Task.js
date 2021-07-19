@@ -91,7 +91,7 @@ export default function Task() {
           <button onClick={() => setStartTimer(true)}>Start</button>
           <button onClick={() => setStartTimer(false)}>Stop</button>
           <button onClick={() => setTime(0)}>Reset</button>
-          <button onClick={ringBell}>Bell</button>
+          {/* <button onClick={ringBell}>Bell</button>` */}
         </Row>
       </Container>
     </Card>
