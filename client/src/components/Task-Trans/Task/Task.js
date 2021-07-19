@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Card, Row, Container, ProgressBar } from "react-bootstrap";
 import "./Task.css";
+import bell from "../../../static/dbell.mp3";
 
 export default function Task() {
   const [listItem, setListItem] = useState(" ");
@@ -9,6 +10,18 @@ export default function Task() {
   const [time, setTime] = useState(0);
   const [timeLimit, setTimeLimit] = useState(0);
   const [startTimer, setStartTimer] = useState(false);
+  const [audio] = useState(new Audio(bell));
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  function playPause() {
+    if (isPlaying === false) {
+      setIsPlaying(true);
+      audio.play();
+    } else {
+      setIsPlaying(false);
+      audio.pause();
+    }
+  }
 
   // console.log(time);
   // console.log(timeLimit);
@@ -92,6 +105,10 @@ export default function Task() {
           <button onClick={() => setStartTimer(false)}>Stop</button>
           <button onClick={() => setTime(0)}>Reset</button>
           {/* <button onClick={ringBell}>Bell</button>` */}
+          <div>
+            <p>{isPlaying ? "Song is Playing" : "Song is Paused"}</p>
+            <button onClick={playPause}>Play | Pause</button>
+          </div>
         </Row>
       </Container>
     </Card>
