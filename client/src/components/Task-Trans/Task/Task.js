@@ -11,36 +11,31 @@ export default function Task() {
   const [timeLimit, setTimeLimit] = useState(0);
   const [startTimer, setStartTimer] = useState(false);
   const [audio] = useState(new Audio(bell));
-  const [isPlaying, setIsPlaying] = useState(false);
 
-  function playPause() {
-    if (isPlaying === false) {
-      setIsPlaying(true);
-      audio.play();
-    } else {
-      setIsPlaying(false);
-      audio.pause();
-    }
-  }
-
-  // console.log(time);
+  console.log(time);
+  // console.log(isPlaying);
   // console.log(timeLimit);
   // console.log(startTimer);
 
-  // If (timeLimit === 0) {make noise}
   useEffect(() => {
     let interval = null;
 
     if (startTimer) {
       interval = setInterval(() => {
         setTime((seconds) => seconds + 0.17 / timeLimit);
+        // ==========================
+        if (time === 0.34) {
+          audio.play();
+        }
+        // Note regarding the sound functionality: This whole time the issue is that I have been trying to get the sound file to play on an exact second like at 2 seconds, 5 seconds, etc. The problem is that time is never going to exactly equal an even second because it is always going to be a multiple of 0.17 based on the way I designed this functionality. I can make this work, but it would be better to redesign the time element so that it better reflects a human conception of time rather than the weird division that I have made to work.
+        // ==========================
       }, 100);
     } else if (!startTimer) {
       clearInterval(interval);
     }
 
     return () => clearInterval(interval);
-  }, [startTimer]);
+  }, [startTimer, timeLimit, time]);
 
   return (
     <Card>
@@ -104,11 +99,6 @@ export default function Task() {
           <button onClick={() => setStartTimer(true)}>Start</button>
           <button onClick={() => setStartTimer(false)}>Stop</button>
           <button onClick={() => setTime(0)}>Reset</button>
-          {/* <button onClick={ringBell}>Bell</button>` */}
-          <div>
-            <p>{isPlaying ? "Song is Playing" : "Song is Paused"}</p>
-            <button onClick={playPause}>Play | Pause</button>
-          </div>
         </Row>
       </Container>
     </Card>
