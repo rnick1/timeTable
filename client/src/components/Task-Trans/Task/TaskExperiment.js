@@ -3,7 +3,7 @@ import { Card, Row, Container, ProgressBar } from "react-bootstrap";
 import "./Task.css";
 import bell from "../../../static/dbell.mp3";
 
-export default function Task() {
+export default function TaskExperiment() {
   const [listItem, setListItem] = useState(" ");
   const [taskVisibility, setTaskVisibility] = useState(true);
   const [timeVisibility, setTimeVisibility] = useState(true);
@@ -14,7 +14,7 @@ export default function Task() {
 
   console.log(time);
   // console.log(isPlaying);
-  // console.log(timeLimit);
+  console.log(timeLimit);
   // console.log(startTimer);
 
   // timeLimit is the maximum amount of time that the user has alloted to the task.
@@ -23,12 +23,13 @@ export default function Task() {
 
   useEffect(() => {
     let interval = null;
+    var seconds = (timeLimit * 60) / 100;
 
     if (startTimer) {
       interval = setInterval(() => {
         setTime((seconds) => seconds + 0.17 / timeLimit);
         // ==========================
-        if (time === 0.34) {
+        if (time === timeLimit) {
           audio.play();
         }
         // Note regarding the sound functionality: This whole time the issue is that I have been trying to get the sound file to play on an exact second like at 2 seconds, 5 seconds, etc. The problem is that time is never going to exactly equal an even second because it is always going to be a multiple of 0.17 based on the way I designed this functionality. I can make this work, but it would be better to redesign the time element so that it better reflects a human conception of time rather than the weird division that I have made to work.
@@ -85,7 +86,7 @@ export default function Task() {
                 placeholder="Please enter a number of minutes for this task"
                 id="input-task-minutes"
                 name="setTime"
-                onChange={(event) => setTimeLimit(event.target.value)}
+                onChange={(event) => setTimeLimit(event.target.value) * 60}
               ></input>
               <button
                 className="input-task-button"
